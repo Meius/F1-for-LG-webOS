@@ -1,0 +1,10 @@
+{
+  "id": "io.github.meius.f1tv.service",
+  "description": "F1 for LG webOS helper service",
+  "services": [
+    {
+      "name": "io.github.meius.f1tv.service",
+      "description": "Remote-control navigation and login language fix for the F1 TV web player"
+    }
+  ]
+}

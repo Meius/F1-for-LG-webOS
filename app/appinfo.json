@@ -1,0 +1,15 @@
+{
+  "id": "io.github.meius.f1tv",
+  "version": "1.1.3",
+  "vendor": "meius",
+  "type": "web",
+  "main": "index.html",
+  "title": "F1 for LG webOS",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "bgColor": "#15151e",
+  "iconColor": "#e10600",
+  "resolution": "1920x1080",
+  "transparent": false,
+  "disableBackHistoryAPI": false
+}

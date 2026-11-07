@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>F1 for LG webOS</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #15151e; color: #fff; font-family: sans-serif; }
+    .c { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .logo { width: 440px; height: 280px; border-radius: 24px; box-shadow: 0 12px 40px rgba(0, 0, 0, .5); }
+    p { font-size: 28px; opacity: .7; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <div class="c">
+    <img class="logo" src="logo.png" alt="F1 for LG webOS">
+    <p id="msg">Loading…</p>
+  </div>
+  <script>
+    // Start the app's helper service (remote-control navigation, login language fix), then open F1 TV's web player.
+    // If the service cannot start (no debugging port on this TV), F1 TV still opens; it is then used with the pointer.
+    (function () {
+      var SERVICE = 'luna://' + 'io.github.meius.f1tv' + '.service/start';
+      var URL = 'https://f1tv.formula1.com/';
+      var gone = false;
+      function go() {
+        if (gone) return;
+        gone = true;
+        window.location.replace(URL);
+      }
+      try {
+        window.__bridge = new PalmServiceBridge();
+        window.__bridge.onservicecallback = function () { go(); };
+        window.__bridge.call(SERVICE, '{}');
+      } catch (e) {
+        go();
+      }
+      setTimeout(go, 4000); // never wait longer than this
+    })();
+  </script>
+</body>
+</html>
